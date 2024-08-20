@@ -32,7 +32,7 @@ app.post("/api/users", (req, res) => {
   users.push({ ...body, id: users.length + 1 });
   fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (err, data) => {
     // console.log("body", body);
-    return res.json({ status: "Status Pending" });
+    return res.json({ status: "Success", id: users.legnth });
   });
 });
 
