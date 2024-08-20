@@ -1,0 +1,14 @@
+{
+  "name": "rest-api-s",
+  "version": "1.0.0",
+  "description": "REST API's Project hello how are you",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
