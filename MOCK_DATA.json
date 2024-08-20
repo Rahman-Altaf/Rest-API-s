@@ -7998,5 +7998,13 @@
     "email": "epenvarnerr@google.fr",
     "gender": "Male",
     "job_title": "Programmer Analyst III"
+  },
+  {
+    "first_name": "Rahman",
+    "last_name\n": "Altaf",
+    "email": "xyz@gmail.com",
+    "gender": "Male",
+    "job_title": "CEO",
+    "id": 1001
   }
 ]
