@@ -6,49 +6,55 @@ const PORT = 8000;
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 
-// 
+// How to create log txt file using fs append function to catch every log data of users
+// app.use((req, res, next) => {
+//   fs.appendFile(
+//     "log.txt",
+//     `\n ${Date.now()}: ${req.id},${req.path},${req.method}`,
+//     (err, data) => {
+//       next();
+//     }
+//   );
+// });
 
-
-
-
-// Middle Ware
-app.use((req, res, next) => {
-  console.log("Hello From Middle ware 1");
-  req.myUsername = "Hi My Name is Rahman ";
-  //   return res.json({ msg: "Hello From Middle Ware 1" });
-  //   return res.json(users);
-  //   return res.json(users); is ka or next line jo likhi hay dono ka same kaam hay next() function just next query pass karta hay let's see
-  next();
-});
+// // Middle Ware
+// app.use((req, res, next) => {
+//   console.log("Hello From Middle ware 1");
+//   req.myUsername = "Hi My Name is Rahman ";
+//   //   return res.json({ msg: "Hello From Middle Ware 1" });
+//   //   return res.json(users);
+//   //   return res.json(users); is ka or next line jo likhi hay dono ka same kaam hay next() function just next query pass karta hay let's see
+//   next();
+// });
 
 // Multi Middle Ware Mostly Used In Banking App For Login Check , User Authentication Check
 // lets create step  by step Multi Middle Ware
-app.use((req, res, next) => {
-  console.log("Middle Ware 2 For Username Check ", req.myUsername);
+// app.use((req, res, next) => {
+//   console.log("Middle Ware 2 For Username Check ", req.myUsername);
 
-  //   res.json(users);
-  next();
-});
+//   //   res.json(users);
+//   next();
+// });
 
-app.use((req, res, next) => {
-  console.log("Successfully Login");
-  next();
-});
-app.use((req, res, next) => {
-  console.log("Hi My Id Is 123");
-  res.json(users);
-});
+// app.use((req, res, next) => {
+//   console.log("Successfully Login");
+//   next();
+// });
+// app.use((req, res, next) => {
+//   console.log("Hi My Id Is 123");
+//   res.json(users);
+// });
 
-app.use((req, res, next) => {
-  //   return res.json({
-  //     msg: " Middle Ware 3 For Password Check" + req.myUsername,
-  //   });
-  next();
-});
-app.use((req, res, next) => {
-  console.log("Time:", Date.now());
-  next();
-});
+// app.use((req, res, next) => {
+//   //   return res.json({
+//   //     msg: " Middle Ware 3 For Password Check" + req.myUsername,
+//   //   });
+//   next();
+// });
+// app.use((req, res, next) => {
+//   console.log("Time:", Date.now());
+//   next();
+// });
 
 // Routes
 app.get("/users", (req, res) => {
@@ -61,6 +67,9 @@ app.get("/users", (req, res) => {
 });
 // Routes
 app.get("/api/users", (req, res) => {
+  console.log(req.headers);
+  res.setHeader("X-myName", "Codex - Server");
+  res.setHeader("W-myNname1", "Rahman Altaf");
   return res.json(users);
 });
 // Routes
