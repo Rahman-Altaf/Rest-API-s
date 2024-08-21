@@ -6,6 +6,50 @@ const PORT = 8000;
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 
+// 
+
+
+
+
+// Middle Ware
+app.use((req, res, next) => {
+  console.log("Hello From Middle ware 1");
+  req.myUsername = "Hi My Name is Rahman ";
+  //   return res.json({ msg: "Hello From Middle Ware 1" });
+  //   return res.json(users);
+  //   return res.json(users); is ka or next line jo likhi hay dono ka same kaam hay next() function just next query pass karta hay let's see
+  next();
+});
+
+// Multi Middle Ware Mostly Used In Banking App For Login Check , User Authentication Check
+// lets create step  by step Multi Middle Ware
+app.use((req, res, next) => {
+  console.log("Middle Ware 2 For Username Check ", req.myUsername);
+
+  //   res.json(users);
+  next();
+});
+
+app.use((req, res, next) => {
+  console.log("Successfully Login");
+  next();
+});
+app.use((req, res, next) => {
+  console.log("Hi My Id Is 123");
+  res.json(users);
+});
+
+app.use((req, res, next) => {
+  //   return res.json({
+  //     msg: " Middle Ware 3 For Password Check" + req.myUsername,
+  //   });
+  next();
+});
+app.use((req, res, next) => {
+  console.log("Time:", Date.now());
+  next();
+});
+
 // Routes
 app.get("/users", (req, res) => {
   const html = `
